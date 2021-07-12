@@ -7,6 +7,15 @@
   <groupId>org.example</groupId>
   <artifactId>CamelApp</artifactId>
   <packaging>jar</packaging>
+
+  <repositories>
+    <repository>
+      <id>project.local</id>
+      <name>project</name>
+      <url>file:${project.basedir}/src/main/resources/sqljdbc-dependency</url>
+    </repository>
+  </repositories>
+
   <version>1.0-SNAPSHOT</version>
 
   <name>A Camel Route</name>
@@ -15,6 +24,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <log4j2-version>2.13.3</log4j2-version>
+    <!-- DATABASE -->
+    <hibernate-core.version>5.2.2.Final</hibernate-core.version>
+    <hibernate-c3p0.version>5.2.2.Final</hibernate-c3p0.version>
+    <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+    <hibernate-commons-annotations.version>3.2.0.Final</hibernate-commons-annotations.version>
+    <hibernate-envers.version>5.1.0.Final</hibernate-envers.version>
+    <hibernate-entitymanager.version>5.1.0.Final</hibernate-entitymanager.version>
+    <hibernate-infinispan.version>5.2.2.Final</hibernate-infinispan.version>
   </properties>
 
   <dependencyManagement>
@@ -31,6 +48,18 @@
   </dependencyManagement>
 
   <dependencies>
+
+    <dependency>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>sqljdbc4</artifactId>
+      <version>4.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-dbcp2</artifactId>
+      <version>2.1.1</version>
+    </dependency>
 
     <dependency>
       <groupId>org.apache.camel</groupId>
@@ -91,7 +120,54 @@
       <artifactId>lombok</artifactId>
       <version>1.18.12</version>
     </dependency>
+
+    <!-- DATABASE -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate-core.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-commons-annotations</artifactId>
+      <version>${hibernate-commons-annotations.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-c3p0</artifactId>
+      <version>${hibernate-c3p0.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-envers</artifactId>
+      <version>${hibernate-envers.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>${hibernate-entitymanager.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-infinispan</artifactId>
+      <version>${hibernate-infinispan.version}</version>
+    </dependency>
+
   </dependencies>
+
+
+
 
   <build>
     <defaultGoal>install</defaultGoal>

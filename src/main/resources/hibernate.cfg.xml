@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+		<property name="hibernate.hbm2ddl.auto">validate</property>
+
+		<!-- cache -->
+		<property name="hibernate.cache.use_query_cache">true</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+
+		<!--  INFINISPAN -->
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.infinispan.InfinispanRegionFactory</property>
+		<property name="hibernate.cache.inifinispan.statistics">true</property>
+		<property name="hibernate.cache.infinispan.cfg">infinispan-cache.xml</property>
+
+		<!-- for debug purpose -->
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.use_sql_comments">false</property>
+		<!-- /for debug purpose -->
+
+		<!-- c3p0 config http://www.hibernate.org/214.html -->
+		<property name="hibernate.c3p0.acquire_increment">1</property>
+		<property name="hibernate.c3p0.idle_test_period">60</property>
+		<property name="hibernate.c3p0.min_size">1</property>
+		<property name="hibernate.c3p0.max_size">10</property>
+		<property name="hibernate.c3p0.max_statements">10</property>
+		<property name="hibernate.c3p0.timeout">0</property>
+		<property name="hibernate.c3p0.acquireRetryAttempts">15</property>
+		<property name="hibernate.c3p0.acquireRetryDelay">600000</property>
+		<property name="connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+
+		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+	</session-factory>
+</hibernate-configuration>
